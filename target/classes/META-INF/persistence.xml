@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="BachHoaXanhPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Managed Entity Classes -->
+        <class>com.bachhoaxanh.user.User</class>
+        <class>com.bachhoaxanh.customer.Customer</class>
+        <class>com.bachhoaxanh.staff.Staff</class>
+        <class>com.bachhoaxanh.address.Address</class>
+        <class>com.bachhoaxanh.category.Category</class>
+        <class>com.bachhoaxanh.supplier.Supplier</class>
+        <class>com.bachhoaxanh.product.Product</class>
+        <class>com.bachhoaxanh.cart.Cart</class>
+        <class>com.bachhoaxanh.lineitem.LineItem</class>
+        <class>com.bachhoaxanh.order.Order</class>
+        <class>com.bachhoaxanh.payment.Payment</class>
+        <class>com.bachhoaxanh.review.Review</class>
+        <class>com.bachhoaxanh.promotion.Promotion</class>
+
+        <properties>
+            <!-- Neon PostgreSQL JDBC Connection (requires sslmode=require) -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ep-fancy-bar-b4ucs4nc-pooler.c-6.us-east-2.aws.neon.tech:5432/banhhoaxanhdb?sslmode=require"/>
+            <property name="jakarta.persistence.jdbc.user" value="neondb_owner"/>
+            <property name="jakarta.persistence.jdbc.password" value="npg_V2kS1syQPYae"/>
+
+            <!-- Hibernate ORM Configuration -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- HikariCP Connection Pool Integration -->
+            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="10"/>
+            <property name="hibernate.hikari.minimumIdle" value="2"/>
+            <property name="hibernate.hikari.idleTimeout" value="300000"/>
+            <property name="hibernate.hikari.connectionTimeout" value="30000"/>
+        </properties>
+    </persistence-unit>
+</persistence>
